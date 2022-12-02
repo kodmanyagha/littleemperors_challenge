@@ -26,11 +26,13 @@ class HotelStoreRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'string',
                 'max: 1000',
             ],
 
             'city' => [
                 'required',
+                'string',
             ],
 
             'image' => [
@@ -39,10 +41,13 @@ class HotelStoreRequest extends FormRequest
             ],
 
             'address' => [
+                'required',
+                'string',
                 'max: 1000',
             ],
 
             'description' => [
+                'string',
                 'max: ' . (1024 * 64 - 1),
             ],
 
@@ -54,10 +59,12 @@ class HotelStoreRequest extends FormRequest
 
             'latitude' => [
                 'required',
+                'numeric',
             ],
 
             'longitude' => [
                 'required',
+                'numeric',
             ],
         ];
     }

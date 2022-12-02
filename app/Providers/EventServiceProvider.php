@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Events\CityCreatedEvent;
-use App\Events\HotelCreatedEvent;
+use App\Events\City\CityCreatedEvent;
+use App\Events\Hotel\HotelCreatedEvent;
 use App\Events\UserRegistered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

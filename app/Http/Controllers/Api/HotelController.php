@@ -4,48 +4,46 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Hotel\HotelStoreRequest;
+use App\Http\Resources\Api\HotelCollection;
+use App\Http\Resources\Api\HotelResource;
+use App\Models\Hotel;
+use App\Services\City\CityService;
+use App\Services\Hotel\HotelService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class HotelController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return HotelCollection
      */
-    public function index()
+    public function index(): HotelCollection
     {
-        //
+        return HotelCollection::make(Hotel::query()->simplePaginate());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param HotelStoreRequest $request
+     * @param HotelService $hotelService
      *
-     * @param Request $request
-     *
-     * @return Response
+     * @return HotelResource
      */
-    public function store(HotelStoreRequest $request)
+    public function store(HotelStoreRequest $request, HotelService $hotelService): HotelResource
     {
-        //
+        return HotelResource::make($hotelService->create($request->validated()));
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param int $id
      *
-     * @return Response
+     * @return HotelResource
      */
-    public function show($id)
+    public function show(int $id): HotelResource
     {
-        //
+        return HotelResource::make(Hotel::query()->findOrFail($id));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
      * @param int $id
      *
@@ -57,8 +55,6 @@ class HotelController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param int $id
      *
      * @return Response

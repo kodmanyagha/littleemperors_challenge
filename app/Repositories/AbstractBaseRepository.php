@@ -2,8 +2,7 @@
 
 namespace App\Repositories;
 
-class AbstractBaseRepository
+abstract class AbstractBaseRepository implements AbstractBaseRepositoryInterface
 {
-    // TODO Implement basic methods.
-
+    abstract public function insert(array $data): bool;
 }

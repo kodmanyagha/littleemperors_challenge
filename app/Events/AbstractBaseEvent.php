@@ -8,21 +8,22 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class HotelCreatedEvent
+abstract class AbstractBaseEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(public int $id)
+    /**
+     * Sub classes can override this.
+     *
+     * @return string
+     */
+    protected function getPrivateChannelName(): string
     {
+        return "channel-name";
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return Channel|PrivateChannel|array
-     */
     public function broadcastOn(): Channel|PrivateChannel|array
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel($this->getPrivateChannelName());
     }
 }

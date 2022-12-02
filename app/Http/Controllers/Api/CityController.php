@@ -7,7 +7,7 @@ use App\Http\Requests\Api\City\CityStoreRequest;
 use App\Http\Resources\Api\CityCollection;
 use App\Http\Resources\Api\CityResource;
 use App\Models\City;
-use App\Services\CityService;
+use App\Services\City\CityService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -47,8 +47,6 @@ class CityController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
      * @param int $id
      *
@@ -60,8 +58,6 @@ class CityController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param int $id
      *
      * @return Response
