@@ -1,0 +1,10 @@
+*
+!.gitignore
+!mysql
+!redis
+
+./beanstalkd/*
+./memcached/*
+./mysql/*
+./redis/*
+

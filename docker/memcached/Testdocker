@@ -1,0 +1,27 @@
+# Set the base image to use to Ubuntu
+ FROM ubuntu
+
+ # Set the file maintainer (your name - the file's author)
+ MAINTAINER cSphere
+
+Then we can begin to install Memcached
+
+
+ # Install Memcached
+ RUN apt-get install -y memcached
+
+Set the default open container ports:
+
+ # Port to expose (default: 11211)
+ EXPOSE 11211
+
+Run and set the default entry (such as Memcached process):
+
+ # Set the user to run Memcached daemon
+ USER daemon
+
+ # Set the entrypoint to memcached binary
+ ENTRYPOINT memcached
+
+ # Default Memcached run command arguments
+ CMD [ "-u", "root", "-m", "128"]
