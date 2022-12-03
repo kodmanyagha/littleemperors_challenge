@@ -50,7 +50,7 @@ class HotelController extends Controller
      */
     public function show(int $id): HotelResource
     {
-        return HotelResource::make(Hotel::query()->findOrFail($id)->with('city'));
+        return HotelResource::make(Hotel::query()->with('city')->findOrFail($id));
     }
 
     /**

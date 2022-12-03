@@ -59,12 +59,10 @@ class HotelStoreRequest extends FormRequest
 
             'latitude' => [
                 'required',
-                'numeric',
             ],
 
             'longitude' => [
                 'required',
-                'numeric',
             ],
         ];
     }
