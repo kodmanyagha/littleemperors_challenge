@@ -15,6 +15,9 @@ use Illuminate\Http\Response;
 class CityController extends Controller
 {
     /**
+     * Get cities
+     * @group City
+     *
      * @return CityCollection
      */
     public function index(): CityCollection
@@ -23,6 +26,9 @@ class CityController extends Controller
     }
 
     /**
+     * Create city
+     * @group City
+     *
      * @param CityStoreRequest $request
      * @param CityService $service
      *
@@ -37,6 +43,9 @@ class CityController extends Controller
     }
 
     /**
+     * Get a city
+     * @group City
+     *
      * @param int $id
      *
      * @return CityResource
@@ -47,6 +56,9 @@ class CityController extends Controller
     }
 
     /**
+     * Update a city
+     * @group City
+     *
      * @param Request $request
      * @param int $id
      *
@@ -58,6 +70,9 @@ class CityController extends Controller
     }
 
     /**
+     * Delete a city
+     * @group City
+     *
      * @param int $id
      *
      * @return Response

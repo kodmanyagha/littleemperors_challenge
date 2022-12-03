@@ -28,8 +28,10 @@ class CityService
 
         $name = $data['name'];
 
-        if (City::query()->where('name', $name)->exists()) {
-            throw new Exception('City exist.');
+        $existCity = City::query()->where('name', $name)->first();
+
+        if (!is_null($existCity)) {
+            return $existCity;
         }
 
         return $this->create($data);

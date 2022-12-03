@@ -22,10 +22,12 @@ class HotelResource extends JsonResource
      */
     public function toArray($request): array|JsonSerializable|Arrayable
     {
+        $city = is_null($this->city) ? null : $this->city->name;
+
         return [
             'id'   => $this->id,
             'name' => $this->name,
-            'city' => $this->city,
+            'city' => $city,
         ];
     }
 }

@@ -31,7 +31,7 @@ trait CrudServiceTrait
         if (is_int($oldModel)) {
             $oldModel = (new $this->model())->findOrFail($oldModel);
         }
-        $oldModel->update($newModel);
+        $oldModel->update(makeArray($newModel));
 
         if (property_exists($this, 'updatedEventClass')) {
             event(new $this->updatedEventClass($oldModel->id));
@@ -42,6 +42,9 @@ trait CrudServiceTrait
 
     public function delete(int|Model $model)
     {
+        if (is_int($model)) {
+            $model = (new $this->model())->findOrFail($model);
+        }
         $id = $model->id;
         $model->delete();
 
