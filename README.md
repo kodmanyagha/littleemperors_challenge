@@ -2,12 +2,12 @@
 
 ## Development Process
 
-- [ ] Create service.
+- [x] Create service.
     - [x] `bulk` mode (100 lines per insert SQL.)
     - [ ] `load` mode (Fastest insert with MySQL LOAD DATA feature.)
-- [ ] Write tests for service and API.
+- [x] Write tests for service and API.
 - [x] Create command.
-- [ ] Create HTTP API.
+- [x] Create HTTP API.
 
 ## Requirements
 
