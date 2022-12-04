@@ -20,7 +20,10 @@ class HotelServiceTest extends DbInitializedTestCase
         $mockHotelRepository = $this->mock(HotelRepository::class);
         $mockHotelRepository->expects('insert')->andReturn(true);
 
-        $service = new HotelService($mockHotelRepository);
+        $this->instance(HotelRepository::class, $mockHotelRepository);
+
+        /** @var HotelService $service */
+        $service = $this->app->get(HotelService::class);
 
         $service->importCsvFile(
             base_path('tests/data/hotels.csv'),
@@ -28,7 +31,6 @@ class HotelServiceTest extends DbInitializedTestCase
             InsertModeEnum::BULK,
             false
         );
-
     }
 
     /**
@@ -36,7 +38,8 @@ class HotelServiceTest extends DbInitializedTestCase
      */
     public function test_import_correct()
     {
-        $service = new HotelService();
+        /** @var HotelService $service */
+        $service = $this->app->get(HotelService::class);
 
         $service->importCsvFile(
             base_path('tests/data/hotels.csv'),
@@ -52,7 +55,8 @@ class HotelServiceTest extends DbInitializedTestCase
 
     public function test_throw_file_not_found_exception()
     {
-        $service = new HotelService();
+        /** @var HotelService $service */
+        $service = $this->app->get(HotelService::class);
 
         try {
             $service->importCsvFile('unknonw_file.csv', DelimiterEnum::SEMICOLON, InsertModeEnum::BULK, false);

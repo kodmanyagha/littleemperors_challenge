@@ -27,15 +27,8 @@ class HotelService
     protected $updatedEventClass = HotelUpdatedEvent::class;
     protected $deletedEventClass = HoteDeletedEvent::class;
 
-    private HotelRepository $hotelRepository;
-
-    public function __construct(?HotelRepository $hotelRepository = null)
+    public function __construct(private readonly HotelRepository $hotelRepository)
     {
-        if (is_null($hotelRepository)) {
-            $this->hotelRepository = new HotelRepository();
-        } else {
-            $this->hotelRepository = $hotelRepository;
-        }
     }
 
     /**

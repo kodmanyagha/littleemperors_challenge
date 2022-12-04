@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\Support\MessagingQueue\MQServiceCreator;
-use App\Services\Support\MessagingQueue\MQServiceInterface;
+use App\Repositories\HotelRepository;
 use Illuminate\Support\ServiceProvider;
 
 class MessagingQueueProvider extends ServiceProvider
@@ -23,8 +22,8 @@ class MessagingQueueProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(MQServiceInterface::class, function () {
-            return MQServiceCreator::create();
+        $this->app->bind(HotelRepository::class, function () {
+            return new HotelRepository();
         });
     }
 }
