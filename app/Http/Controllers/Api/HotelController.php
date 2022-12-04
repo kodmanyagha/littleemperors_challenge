@@ -8,9 +8,7 @@ use App\Http\Requests\Api\Hotel\HotelUpdateRequest;
 use App\Http\Resources\Api\HotelCollection;
 use App\Http\Resources\Api\HotelResource;
 use App\Models\Hotel;
-use App\Services\City\CityService;
 use App\Services\Hotel\HotelService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class HotelController extends Controller
